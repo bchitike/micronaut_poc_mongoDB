@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.vertex
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, gradle, http-client, java, java-application, junit, logback, lombok, micronaut-build, mongo-reactive, netty-server, reactor, reactor-http-client, readme, serialization-bson, shade, testcontainers, yaml]

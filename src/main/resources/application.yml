@@ -1,0 +1,12 @@
+micronaut:
+  application:
+    name: demoMicronauthPoc
+netty:
+  default:
+    allocator:
+      max-order: 3
+mongodb:
+  uri: mongodb://${MONGO_HOST}:${MONGO_PORT}
+db:
+  name: ${MONGO_DB}
+  collection: ${MONGO_COLLECTION}
