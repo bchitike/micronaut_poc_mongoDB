@@ -11,13 +11,13 @@ import javax.validation.constraints.NotBlank;
 
 public interface InvoiceRepo {
 
-    Publisher<InvoiceDTO> getAllInvoices();
+    Publisher<Document> getAllInvoices();
 
-    Mono<InvoiceDTO> getInvoiceById(@NonNull @NotBlank String id);
+    Mono<Document> getInvoiceById(@NonNull @NotBlank String id);
 
     Mono<Boolean> saveInvoice(@NonNull @NotBlank @Valid InvoiceDTO invoice);
 
     Mono<Boolean> deleteInvoice(@NonNull @NotBlank String id);
 
-    Mono<Boolean> updateInvoice(@NonNull @NotBlank String id, @NonNull @NotBlank @Valid InvoiceDTO invoice);
+    Mono<Document> updateInvoice(@NonNull @NotBlank String id, @NonNull @NotBlank @Valid InvoiceDTO invoice);
 }

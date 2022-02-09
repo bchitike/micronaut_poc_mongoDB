@@ -3,6 +3,7 @@ package com.vertex.controller;
 import com.vertex.model.InvoiceDTO;
 import com.vertex.repository.InvoiceRepo;
 import io.micronaut.core.annotation.NonNull;
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
 import jakarta.inject.Inject;
@@ -21,10 +22,10 @@ public class InvoiceController {
     InvoiceRepo invoiceService;
 
     @Get
-    public Publisher<InvoiceDTO> getAll() { return invoiceService.getAllInvoices(); }
+    public Publisher<Document> getAll() { return invoiceService.getAllInvoices(); }
 
     @Get("/{id}")
-    public Mono<InvoiceDTO> getInvoiceById(@NonNull @NotBlank String id){
+    public Mono<Document> getInvoiceById(@NonNull @NotBlank String id){
         return invoiceService.getInvoiceById(id);
     }
 
@@ -32,21 +33,11 @@ public class InvoiceController {
     public Mono<HttpStatus> saveInvoice(@NonNull @NotNull @Valid @Body InvoiceDTO invoice) {
         return invoiceService.saveInvoice(invoice)
                 .map(added -> (added) ? HttpStatus.CREATED : HttpStatus.CONFLICT);
-        /*
-        Boolean val = invoiceService.saveInvoice(invoice);
-        if(val){
-            return CREATED;
-        }else{
-
-        }
-
-         */
     }
 
     @Put("/{id}")
-    public Mono<HttpStatus> updateInvoice(@NonNull @NotBlank String id, @NonNull @NotNull @Valid @Body InvoiceDTO invoice){
-        return invoiceService.updateInvoice(id, invoice)
-                .map(updated -> (updated)? HttpStatus.OK : HttpStatus.CONFLICT);
+    public Mono<Document> updateInvoice(@NonNull @NotBlank String id, @NonNull @NotNull @Valid @Body InvoiceDTO invoice){
+        return invoiceService.updateInvoice(id, invoice);
     }
 
     @Delete("/{id}")
